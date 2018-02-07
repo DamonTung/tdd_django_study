@@ -6,7 +6,6 @@ import unittest
 from dt_tdd.views import home_page
 from dt_tdd.models import Item
 
-# Create your tests here.
 
 class ItemModelTest(TestCase):
     def test_saving_and_retrieve_items(self):
@@ -25,7 +24,6 @@ class ItemModelTest(TestCase):
         second_saved_item = saved_item[1]
         self.assertEqual(first_saved_item.text, 'The first (ever) list item')
         self.assertEqual(second_saved_item.text, 'Item the second')
-
 
 
 class HomePageTest(TestCase):
