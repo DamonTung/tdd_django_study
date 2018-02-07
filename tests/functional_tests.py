@@ -18,7 +18,7 @@ class NewVisitorTest(unittest.TestCase):
         self.assertIn(row_text, [row.text for row in rows])
 
     def test_can_start_a_list_and_retrieve_it_later(self):
-        self.browser.get('http://localhost:8000')
+        self.browser.get('http://127.0.0.1:8000')
 
         self.assertIn('To-Do', self.browser.title)
         header_text = self.browser.find_element_by_tag_name('h1').text
@@ -29,16 +29,17 @@ class NewVisitorTest(unittest.TestCase):
         inputbox.send_keys('Buy peacock feathers')
         inputbox.send_keys(Keys.ENTER)
 
-        time.sleep(2)
+        time.sleep(6)
         table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
         self.check_for_row_in_list_table('1: Buy peacock feathers')
-
-        inputbox = self.browser.find_element_by_id('id_new_item')
-        inputbox.send_keys('Use peacock feathers to make a fly')
-        inputbox.send_keys(Keys.ENTER)
-
+        time.sleep(3)
+        inputbox2 = self.browser.find_element_by_id('id_new_item')
+        inputbox2.send_keys('Use peacock feathers to make a fly')
+        inputbox2.send_keys(Keys.ENTER)
+        time.sleep(3)
         self.check_for_row_in_list_table('1: Buy peacock feathers')
+        time.sleep(3)
         self.check_for_row_in_list_table('2: Use peacock feathers to make a fly')
 
         self.fail("Finish the test!")
