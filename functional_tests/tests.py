@@ -43,7 +43,7 @@ class NewVisitorTest(LiveServerTestCase):
         self.check_for_row_in_list_table('1: Buy peacock feathers')
         time.sleep(3)
         self.check_for_row_in_list_table('2: Use peacock feathers to make a fly')
-
+        time.sleep(4)
         # now a new user, Francis, comes along to the site
 
         # # We use a new browser session to make sure that no infomation
@@ -54,11 +54,11 @@ class NewVisitorTest(LiveServerTestCase):
         page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn("Buy peacock feathers", page_text)
         self.assertNotIn("make a fly", page_text)
-
+        time.sleep(3)
         inputbox = self.browser.find_element_by_id('id_new_item')
         inputbox.send_keys('Buy milk')
         inputbox.send_keys(Keys.ENTER)
-
+        time.sleep(3)
         francis_list_url = self.browser.current_url
         self.assertRegex(francis_list_url, '/dt_tdd/.+')
         self.assertNotEqual(edith_list_url, francis_list_url)

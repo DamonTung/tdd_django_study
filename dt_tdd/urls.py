@@ -19,6 +19,8 @@ from dt_tdd import views
 
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
-    url(r'^$', views.home_page, name='home'),
-    url(r'^dt_tdd/', include('dt_tdd.urls')),
+    # url(r'^$', views.home_page, name='home'),
+    url(r'^(\d+)/$', views.view_list, name='view_list'),
+    url(r'^(\d+)/add_item$', views.add_item, name='add_item'),
+    url(r'^new$', views.new_list, name='new_list'),
 ]
